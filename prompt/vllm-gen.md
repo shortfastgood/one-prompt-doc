@@ -15,6 +15,6 @@ The utility has 4 arguments:
 1. Use the environment /Users/dden/gitroot/one-prompt-doc/development/vLLM/.venv.
 2. Use the Python language.
 3. Use example.py as the template.
-4. Put the result in the vLLM folder.
+4. Put the result in the ./development/vLLM folder.
 5. IF a library is not installed, INSTALL the library.
-6. Write the file requirements.txt in the vLLM folder.
+6. Write the file requirements.txt in the ./development/vLLM folder.

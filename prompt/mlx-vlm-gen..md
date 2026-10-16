@@ -15,6 +15,6 @@ The utility has 4 arguments:
 1. USE the environment /Users/dden/gitroot/one-prompt-doc/development/mlx-vlm/.venv.
 2. USE the Python language.
 3. USE example.py as the template.
-4. PUT the result in the mlx-vlm folder.
+4. PUT the result in the ./development/mlx-vlm folder.
 5. IF a library is not installed, INSTALL the library.
-6. WRITE the file requirements.txt in the mlx-vlm folder.
+6. WRITE the file requirements.txt in the ./development/mlx-vlm folder.
