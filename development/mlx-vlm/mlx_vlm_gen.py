@@ -98,7 +98,7 @@ def main() -> None:
     )
     with open(args.output, "w", encoding="utf-8") as f:
         f.write(result.text)
-    print(f"Wrote {len(result.text)} characters to {args.output}")
+    print(result.text)
 
 
 if __name__ == "__main__":
