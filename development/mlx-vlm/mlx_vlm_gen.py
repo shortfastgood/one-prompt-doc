@@ -74,6 +74,11 @@ def parse_args() -> argparse.Namespace:
         default="output.md",
         help="Path to the output file. Default: output.md.",
     )
+    parser.add_argument(
+        "--trace",
+        action="store_true",
+        help="Write the result text additionally to standard output. Off by default.",
+    )
     return parser.parse_args()
 
 
@@ -98,7 +103,15 @@ def main() -> None:
     )
     with open(args.output, "w", encoding="utf-8") as f:
         f.write(result.text)
-    print(result.text)
+
+    written_bytes = len(result.text.encode("utf-8"))
+
+    if args.trace:
+        print(result.text)
+
+    print(f"Bytes written: {written_bytes}")
+    print(f"Output tokens: {result.generation_tokens}")
+    print(f"Performance: {result.generation_tps:.1f} tokens/second")
 
 
 if __name__ == "__main__":
