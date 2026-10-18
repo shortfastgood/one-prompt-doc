@@ -23,3 +23,7 @@ For the generation and management of the project, where not stated otherwise, I 
 ### Deepseek-OCR-2
 
 There is a dependency problem between mlx-vlm and the support files of the model. Qwen was still able to create a patch that solves the problem. These issues are common in fast-changing fields, but they waste time and do not allow a stable environment. Deepseek-OCR-2 is also relatively large, even though it is quite fast.
+
+### Granite-Docling-258M
+
+The model is very light and produces a DocLang XML file, which Docling then uses to generate one of the supported formats. It works well with linear documents, but it cannot map the layout correctly when the layout exists and is important for the understanding of the content. From a technical point of view, everything works well as long as the code that uses the model and the code that does the conversion (Docling) have separate and distinct dependencies. When I tried to use Docling on macOS with MLX, I ran into a whole series of problems and a maze of dependencies and adjustments. This is not the right way to read structured documents. The aim of a project like this is to simplify the code and reduce the dependencies. Adding artificial intelligence to Docling, almost as if it were a new plugin, goes in the opposite direction, and you lose all the possible advantages.
