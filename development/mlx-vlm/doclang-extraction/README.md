@@ -3,12 +3,24 @@
 The command reads a local PNG or JPEG image and writes a new UTF-8 DocLang XML file
 with a `.dclg` or `.xml` extension.
 It applies the skill at `/Users/dden/gitroot/one-prompt-doc/.agents/skills/doclang`.
-The skill path is fixed, as specified in the implementation plan.
+The skill path is fixed in `extractor.py`.
 
-From the project root, use the existing environment:
+The extraction files are in `development/mlx-vlm/doclang-extraction/`:
+
+```text
+doclang-extraction/
+├── extractor.py
+├── requirements.txt
+├── README.md
+├── test_mlx_vlm_doclang.py
+└── test_cv_linear_structure.py
+```
+
+Run all commands below from the project root (`one-prompt-doc/`).
+The existing shared environment is at `development/mlx-vlm/.venv/`.
 
 ```sh
-development/mlx-vlm/.venv/bin/python development/mlx-vlm/mlx_vlm_doclang.py \
+development/mlx-vlm/.venv/bin/python development/mlx-vlm/doclang-extraction/extractor.py \
   --model lmstudio-community/Qwen3.8-27B-MLX-4bit \
   --prompt "Extract all text and preserve the document structure." \
   --max-token 8192 \
@@ -28,12 +40,12 @@ The model argument also accepts a local model directory.
 Use a vision model supported by MLX-VLM with enough context for the skill,
 image tokens, and the selected output allowance. Text-only MLX models cannot extract images.
 
-For a new environment on an Apple Silicon Mac:
+For a checkout without that environment, create it on an Apple Silicon Mac:
 
 ```sh
-python3 -m venv .venv-doclang
-.venv-doclang/bin/python -m pip install -r development/mlx-vlm/requirements-doclang.txt
-.venv-doclang/bin/python development/mlx-vlm/mlx_vlm_doclang.py --help
+python3 -m venv development/mlx-vlm/.venv
+development/mlx-vlm/.venv/bin/python -m pip install -r development/mlx-vlm/doclang-extraction/requirements.txt
+development/mlx-vlm/.venv/bin/python development/mlx-vlm/doclang-extraction/extractor.py --help
 ```
 
 Model IDs use the Hugging Face cache and can download model files.
@@ -83,9 +95,14 @@ to the checker and bounded repair procedure. Normalization does not fix their co
 
 ## Automated verification
 
+The CLI test file still imports the former module name, `mlx_vlm_doclang`.
+Before running the first command, change that import in `test_mlx_vlm_doclang.py`
+to `import extractor as cli`. Until then, test discovery fails with
+`ModuleNotFoundError`. The recorded CLI test results below predate the directory move.
+
 ```sh
 development/mlx-vlm/.venv/bin/python -m unittest discover \
-  -s development/mlx-vlm -p 'test_mlx_vlm_doclang.py' -v
+  -s development/mlx-vlm/doclang-extraction -p 'test_mlx_vlm_doclang.py' -v
 
 development/mlx-vlm/.venv/bin/python -m unittest discover \
   -s .agents/skills/doclang/scripts -p 'test_check_doclang.py' -v
@@ -107,7 +124,7 @@ for both `.dclg` and `.xml`, and rejection of unsupported or missing extensions.
 Generate a new result for `data/CV-linear.png` with the default model:
 
 ```sh
-development/mlx-vlm/.venv/bin/python development/mlx-vlm/mlx_vlm_doclang.py \
+development/mlx-vlm/.venv/bin/python development/mlx-vlm/doclang-extraction/extractor.py \
   --image data/CV-linear.png --output test/output/CV-linear.xml
 ```
 
@@ -116,7 +133,7 @@ Check that generated file without loading a model:
 ```sh
 DOCLANG_CV_OUTPUT=test/output/CV-linear.xml \
   development/mlx-vlm/.venv/bin/python -m unittest discover \
-  -s development/mlx-vlm -p 'test_cv_linear_structure.py' -v
+  -s development/mlx-vlm/doclang-extraction -p 'test_cv_linear_structure.py' -v
 ```
 
 The five checks verify eight headings with explicit levels, employment groups
