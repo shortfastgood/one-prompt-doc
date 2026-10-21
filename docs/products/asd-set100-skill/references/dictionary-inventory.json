@@ -1,0 +1,11 @@
+{
+  "observed_on": "2026-10-21",
+  "source_project": "one-prompt-doc",
+  "source_path": ".agents/skills/asd-ste100/references/dictionary.jsonl",
+  "sha256": "a193301a20f630962b416542d0cadeabd2ae6d3783642b548c47fbc42546ce0f",
+  "size_bytes": 690838,
+  "entries": 2196,
+  "approved": 878,
+  "non_approved": 1318,
+  "dataset_bundled": false
+}

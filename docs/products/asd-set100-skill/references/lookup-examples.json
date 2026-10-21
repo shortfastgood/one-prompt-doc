@@ -1,0 +1,148 @@
+[
+  {
+    "arguments": [
+      "check",
+      "make sure",
+      "removed"
+    ],
+    "output": [
+      {
+        "query": "check",
+        "status": "found",
+        "entries": [
+          {
+            "aliases": [],
+            "approved": true,
+            "excerpts": [
+              {
+                "pdf_page": 188,
+                "printed_page": "2-1-C6",
+                "text": "CHECK (n) The procedure you do to\nmake sure that\nsomething operates\ncorrectly or has no\ndefects\nDO A CHECK OF THE\nHYDRAULIC SYSTEM.\nDO A CHECK FOR\nLOOSE FASTENERS."
+              }
+            ],
+            "part_of_speech": "n",
+            "word": "CHECK"
+          },
+          {
+            "aliases": [],
+            "approved": false,
+            "excerpts": [
+              {
+                "pdf_page": 189,
+                "printed_page": "2-1-C7",
+                "text": "check (v) MAKE SURE (v) MAKE SURE THAT IT\nIS SAFE TO SUPPLY\nELECTRICAL POWER.\nCheck that it is safe to\nsupply electrical power.\nMEASURE (v) MEASURE THE\nDISTANCE BETWEEN\nTHE SURFACES.\nCheck the distance\nbetween the surfaces.\nEXAMINE (v) EXAMINE THE\nCASTING FOR\nCORROSION.\nCheck the casting for\ncorrosion.\nCHECK (n) DO A LEAKAGE\nCHECK OF THE\nVALVE.\nCheck the valve for\nleakage."
+              }
+            ],
+            "part_of_speech": "v",
+            "word": "check"
+          }
+        ]
+      },
+      {
+        "query": "make sure",
+        "status": "found",
+        "entries": [
+          {
+            "aliases": [
+              "made sure",
+              "makes sure"
+            ],
+            "approved": true,
+            "excerpts": [
+              {
+                "pdf_page": 306,
+                "printed_page": "2-1-M2",
+                "text": "MAKE SURE (v),\nMAKES SURE,\nMADE SURE,\nMADE SURE\nTo verify and/or do the\nnecessary steps\nMAKE SURE THAT NO\nLEAK DETECTION\nFLUID GOES INTO THE\nOXYGEN SYSTEM."
+              }
+            ],
+            "part_of_speech": "v",
+            "word": "MAKE SURE"
+          }
+        ]
+      },
+      {
+        "query": "removed",
+        "status": "found",
+        "entries": [
+          {
+            "aliases": [
+              "removed",
+              "removes"
+            ],
+            "approved": true,
+            "excerpts": [
+              {
+                "pdf_page": 357,
+                "printed_page": "2-1-R9",
+                "text": "REMOVE (v),\nREMOVES,\nREMOVED,\nREMOVED\nTo take or move\nsomething away from its\ninitial position\nREMOVE THE\nINDICATOR FROM THE\nPANEL."
+              }
+            ],
+            "part_of_speech": "v",
+            "word": "REMOVE"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "arguments": [
+      "--pos",
+      "v",
+      "test"
+    ],
+    "output": [
+      {
+        "query": "test",
+        "status": "found",
+        "entries": [
+          {
+            "aliases": [],
+            "approved": false,
+            "excerpts": [
+              {
+                "pdf_page": 401,
+                "printed_page": "2-1-T3",
+                "text": "test (v) TEST (n) DO A FUNCTIONAL\nTEST OF THE\nSOFTWARE.\nFunctionally test the\nsoftware."
+              }
+            ],
+            "part_of_speech": "v",
+            "word": "test"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "arguments": [
+      "--search",
+      "accord"
+    ],
+    "output": [
+      {
+        "query": "accord",
+        "status": "index_only",
+        "total_matches": 1,
+        "truncated": false,
+        "matches": [
+          {
+            "word": "according to",
+            "part_of_speech": "prep",
+            "approved": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "arguments": [
+      "unlisted-project-widget"
+    ],
+    "output": [
+      {
+        "query": "unlisted-project-widget",
+        "status": "unresolved",
+        "entries": []
+      }
+    ]
+  }
+]

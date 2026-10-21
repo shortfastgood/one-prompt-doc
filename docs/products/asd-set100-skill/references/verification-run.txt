@@ -1,0 +1,18 @@
+Verification date: 2026-10-21 (Europe/Zurich)
+Python: 3.9.6
+Command: python3 -B -m unittest discover -s .agents/skills/asd-ste100/scripts -p test_lookup_dictionary.py -v
+
+test_entries_are_unique_and_sourced (test_lookup_dictionary.DictionaryTests) ... ok
+test_entries_with_nonsequential_pdf_text_order (test_lookup_dictionary.DictionaryTests) ... ok
+test_explicit_forms_and_case (test_lookup_dictionary.DictionaryTests) ... ok
+test_line_wrapping_does_not_break_headwords (test_lookup_dictionary.DictionaryTests) ... ok
+test_part_of_speech_changes_approval (test_lookup_dictionary.DictionaryTests) ... ok
+test_phrases_and_qualified_entries (test_lookup_dictionary.DictionaryTests) ... ok
+test_restricted_meanings_and_forms_retained (test_lookup_dictionary.DictionaryTests) ... ok
+test_search_is_bounded_and_marked (test_lookup_dictionary.DictionaryTests) ... ok
+test_unknown_is_unresolved (test_lookup_dictionary.DictionaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.082s
+
+OK
