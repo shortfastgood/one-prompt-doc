@@ -1,0 +1,3 @@
+interface:
+  display_name: "DocLang Image Conversion"
+  short_description: "Convert images to structured DocLang 0.8 XML"
