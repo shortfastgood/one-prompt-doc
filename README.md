@@ -1,59 +1,76 @@
 # one-prompt-doc
 
-The purpose of this project is to study the conversion and extraction of text using artificial intelligence. Good software packages that do not use artificial intelligence already exist for the conversion between different formats and therefore also for the extraction, such as [textract](https://textract.readthedocs.io/en/stable/) or [MarkItDown](https://github.com/microsoft/markitdown).
+This project deals with the extraction of text, with a particular focus on the extraction of text from an image. The aim is a procedure that does more than extract the text accurately. It should also preserve the internal organisation of the original document, such as titles, sections, and paragraphs. Ideally, the extracted material should also keep the information about the presence of images, charts, and tables.
 
-## Framework
+To give the extraction a structure, a format is needed that keeps the organisation as well as the text. The format that suits this purpose best is [DocLang](https://doclang.ai), which was designed to be a format suitable for use with artificial intelligence.
 
-For photographed or scanned text, recognition has always been difficult and not always good. I began with the vLLM framework, but the support for macOS and Apple Silicon is not good enough. MLX-VLM, however, is more specific and easier to use.
+On the open market there are OCR software packages (Optical Character Recognition) that do the extraction of text from images very well, such as [Tesseract OCR](https://github.com/tesseract-ocr/tesseract). There are also projects like [EasyOCR](https://github.com/JaidedAI/EasyOCR) and [PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR) that use artificial intelligence, but they all still need a large amount of code, mostly written in Python.
 
-Another useful resource is the [Docling](https://github.com/docling-project/docling) project, which combines the use of artificial intelligence with the conversion to and from a large number of formats, including photographed and scanned documents.
+The same is true of the software packages that convert documents between different formats, such as [anydoc](https://crates.io/crates/anydoc) or [textract](https://textract.readthedocs.io/en/stable/).
+
+Given the skills that artificial intelligence has reached in processing text in many languages and in processing and recognising images, an alternative way is to do the recognition or transformation of documents using mainly artificial intelligence and to keep the code written in languages like Python, Java, Rust, and C++ to a secondary role.
+
+**Disclaimer**: The content and ideas expressed in this project are those of the author, but some parts are generated, in part or in full, by artificial intelligence. The texts are reviewed to ensure linguistically correct wording, with the support of AI.
 
 ## Prompt Engineering
 
+Artificial intelligence is driven by instructions that specify the task and its context. The starting point is the frontier models and the agents that their makers supply with services for users. Four of these are considered: Claude Code (CLI and VSCode plugin), Codex (VSCode plugin), GitHub Copilot, and Mistral Vibe (VSCode plugin).
+
+All of these agents read a configuration file (AGENTS.md or CLAUDE.md) that holds the development guidelines, inspired by the rules proposed by Andrej Karpathy.
+
+| Principle | Addresses |
+|-----------|-----------|
+| **Think Before Coding** | Wrong assumptions, hidden confusion, missing tradeoffs |
+| **Simplicity First** | Overcomplication, bloated abstractions |
+| **Surgical Changes** | Orthogonal edits, touching code you shouldn't |
+| **Goal-Driven Execution** | Leverage through tests-first, verifiable success criteria |
+
+The guidelines alone are not enough; it is necessary to define the procedure for extracting from an image and transforming the result into a DocLang document. To achieve this, three [skills](https://support.claude.com/en/articles/12512176-what-are-skills) have been added to the project: ASD-STE100, DocLang, and LLMWiki.
+
 ### ASD-STE100 Skill
 
-On 2 October 2026, Andrej Karpathy suggested in a [post on X](https://x.com/karpathy/status/2105819303471976479?s=20) to write specifications using the ASD-STE100 format, a controlled subset of the English language used in the aerospace industry. The purpose is to simplify the language and make it precise. I had GPT-6 Astra generate a Skill based on the asd-ste100-issue-9 specification. 
+On 2 October 2026, Andrej Karpathy suggested in a [post on X](https://x.com/karpathy/status/2105819303471976479?s=20) to write specifications using the ASD-STE100 format, a controlled subset of the English language used in the aerospace industry. The purpose is to simplify the language and make it precise. The project uses the SKILL everywhere a precise and concise specification or prompt is required.
 
 [Skill Documentation](./docs/products/asd-set100-skill/index.md)
 
 ### DocLang Skill
 
-I asked GPT-6 Astra to read the [DocLang](https://doclang.ai) specification (version 0.8) and create a Skill that teaches an arbitrary model how to read an image, extract the text, and transform it into an XML file as specified. 
+This skill is the fulfilment of what the project sets out to do: to replace code with a specification that, combined with artificial intelligence, delivers accurate text extraction from an image while preserving its internal organisation. The skill is based on version 0.8 of DocLang.
 
 [Skill Documentation](./docs/products/doclang-skill/index.md)
 
 ### LLMWiki
 
-I asked GPT-6 Astra to generate a Skill that helps me manage an LLMWiki in OKF format ([Open Knowledge Format](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) 0.2)
+This skill is used to manage the documentation of the project, organised as an [LLMWiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) in the OKF format ([Open Knowledge Format](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) 0.2).
 
 [Skill Documentation](./docs/products/llmwiki-skill/index.md)
 
-## Models
+## Environment
 
-For the generation and management of the project, where not stated otherwise, I use the latest versions of Qwen (currently 3.8 27b), Ollama (engine), GitHub Copilot (VSC plugin), and Claude Code. The purpose is to ensure local use of all the software, without relying on external services.
+### Agent
 
-The initial idea is to use small, dedicated models trained specifically for text extraction from images.
+- Antigravity CLI (former Gemini CLI)
+- Claude Code (VSCode plugin and CLI), the desktop is not used because requires a subscription and doesn't work with API keys.
+- Codex (VSCode plugin)
+- GitHub Copilot (VSCode integration)
+- Mistal Vibe (VSCode plugin)
 
-### Deepseek-OCR-2
+### Local Engines
 
-There is a dependency problem between mlx-vlm and the support files of the model. Qwen was still able to create a patch that solves the problem. These issues are common in fast-changing fields, but they waste time and do not allow a stable environment. Deepseek-OCR-2 is also relatively large, even though it is quite fast.
+- [Ollama](https://ollama.com)
+- [oMLX] (https://omlx.ai)
+- [Slotstream](https://github.com/carloslfu/slotstream)
 
-The results are very modest. The text is recognized, but the recognition is coarse. A summary like the one below is reduced to a title and an undifferentiated table. Here the grouping of the text is relevant and is completely missing.
+## Framework
 
-<img src="./data/balance-sheet.jpeg" width=320/>
+- [Docling](https://github.com/docling-project/docling)
+- [MLX-VLM](https://github.com/Blaizzy/mlx-vlm)
 
-### Granite-Docling-258M
+### Deepseek-OCR-2 dedicated script
 
-The model is very light and produces a DocLang XML file, which Docling then uses to generate one of the supported formats. It works well with linear documents, but it cannot map the layout correctly when the layout exists and is important for the understanding of the content. From a technical point of view, everything works well as long as the code that uses the model and the code that does the conversion (Docling) have separate and distinct dependencies. When I tried to use Docling on macOS with MLX, I ran into a whole series of problems and a maze of dependencies and adjustments. This is not the right way to read structured documents. The aim of a project like this is to simplify the code and reduce the dependencies. Adding artificial intelligence to Docling, almost as if it were a new plugin, goes in the opposite direction, and you lose all the possible advantages.
+- [Extractor documentation](./docs/products/library/deepseek-ocr-2-extractor.md)
+- [Environment patch](./docs/products/library/deepseek-ocr-2-environment-patch.md)
 
-Here too the results are modest. The previous summary is recognized and treated differently, but the final result is flat and identical. The test with the technical report below goes even worse: the model extracts the chart as an image and ignores everything else.
+## Test Cases
 
-<img src="./data/technical-report.png" width=320/>
-
-### Other Dedicated Models
-
-With mlx-community/GLM-OCR-bf16, datalab-to/surya-ocr-2, and mlx-community/olmOCR-2-7B-1025-mlx-8bit, I got no better results.
-
-### Other Models
-
-Here the approach is different and uses a Skill and a pre-built agent, such as Claude Code, Codex, or GitHub Copilot, or a custom agent programmed for the specific use.
+[Summary](./test/test-results.md)
