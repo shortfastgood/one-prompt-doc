@@ -1,0 +1,4 @@
+docling-core
+mlx-vlm
+pillow
+transformers
