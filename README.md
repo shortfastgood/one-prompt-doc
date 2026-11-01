@@ -58,7 +58,7 @@ This skill is used to manage the documentation of the project, organised as an [
 ### Local Engines
 
 - [Ollama](https://ollama.com)
-- [oMLX] (https://omlx.ai)
+- [oMLX](https://omlx.ai)
 - [Slotstream](https://github.com/carloslfu/slotstream)
 
 ## Framework
