@@ -12,6 +12,7 @@
 | 6 | tiger-loop-01.png | Qwen 3.8 27B 4Bit | Claude Code (CLI) 2.1.308 | oMLX 0.72 | -- |
 | 7 | tiger-loop-01.png | Ornith 1.5 35b | GitHub Copilot 1.143 | Ollama 0.40.13 | -- |
 | 8 | tiger-loop-01.png | Deepseek OCR 2 | python extractor script | mlx-vlm 0.7.11 | -- |
+| 9 | tiger-loop-01-png | Falcon OCR | python extractor script | mlx-vlm 0.7.11 | -- |
 
 
 Notes:
@@ -53,3 +54,7 @@ Notes:
 
 - [Extraction Report](./deepseek-ocr-2/extraction_report.md)
 - [Markdown](./deepseek-ocr-2/tiger-loop-01.md)
+
+8. The extraction takes a few seconds, but it is limited to the text. 
+
+- [Markdown](./falcon-ocr/tiger-loop-01.md)
