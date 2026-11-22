@@ -41,7 +41,7 @@ This skill is the fulfilment of what the project sets out to do: to replace code
 
 ### LLMWiki
 
-This skill is used to manage the documentation of the project, organised as an [LLMWiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) in the OKF format ([Open Knowledge Format](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) 0.2).
+This skill is used to manage the documentation of the project, organised as an [LLMWiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) in the OKF format ([Open Knowledge Format](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/SPEC.md#13-changes-from-v02) 0.3).
 
 [Skill Documentation](./docs/products/llmwiki-skill/index.md)
 
