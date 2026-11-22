@@ -1,5 +1,7 @@
 ---
-okf_version: "0.2"
+okf_version: "0.3"
+title: Library
+description: General knowledge about image-to-document extraction tools and their environment requirements.
 ---
 # Library
 

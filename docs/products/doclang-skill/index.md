@@ -1,5 +1,7 @@
 ---
-okf_version: "0.2"
+okf_version: "0.3"
+title: doclang-skill
+description: Usage, output format, extraction workflow, and verification for the DocLang image-to-document skill.
 ---
 # doclang-skill
 

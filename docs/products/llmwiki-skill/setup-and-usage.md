@@ -1,7 +1,7 @@
 ---
 type: User Guide
 title: LLMWiki skill setup and usage
-description: Skill files, project selection, classification, and example requests.
+description: Skill files, Python requirements, validator commands, and product selection.
 sources:
   - id: skill
     resource: references/skill.txt
@@ -9,6 +9,15 @@ sources:
   - id: inventory
     resource: references/source-records.md
     title: Inspected skill files and project registration
+  - id: okf
+    resource: references/okf-authoring.txt
+    title: Bundled validator usage and compatibility guidance
+  - id: validator
+    resource: references/validator/validate.py.txt
+    title: Validator command-line interface
+generated:
+  by: process:llmwiki-documentation-refresh
+  at: "2026-11-22T11:09:48Z"
 ---
 # LLMWiki skill setup and usage
 
@@ -23,9 +32,30 @@ llmwiki/
   references/
     okf-authoring.md
     layout-and-examples.md
+  scripts/
+    validate.py
+    LICENSE.okf
+    tests/test_validate.py
+    _vendor/
+      __init__.py
+      NOTICE.md
+      pyyaml/                 # bundled loading modules and MIT license
 ```
 
-The host needs to read project instructions and source material, edit Markdown/files within its permissions, and inspect paths. A YAML parser is useful for validation when available; the skill does not require a particular language or install dependencies automatically. It does not include a command-line initializer or validator.[^skill][^inventory]
+The host needs to read project instructions and source material, edit Markdown/files within its permissions, and inspect paths. Automated validation requires Python 3.9 or later. No pip package, compiled extension, or LibYAML installation is needed. Keep `scripts/_vendor/` beside `validate.py`; copying only the entry script omits its bundled parser. The skill has no command-line wiki initializer.[^skill][^inventory][^okf]
+
+## Run the validator
+
+From the project root, validate one product bundle, not the collection's `docs/` directory:
+
+```bash
+python3 .agents/skills/llmwiki/scripts/validate.py docs/products/llmwiki-skill --json
+python3 .agents/skills/llmwiki/scripts/validate.py docs/products/llmwiki-skill --strict
+```
+
+Substitute the actual skill location and selected bundle. `--json` returns structured findings. `--strict` makes warnings fail the command as well as errors. `--now` accepts a timestamp for reproducible freshness checks. Exit codes are 0 for a pass, 1 for validation errors or strict-mode warnings, and 2 for usage/setup errors. A passing check does not establish factual accuracy or complete product delivery. See [verification](verification.md) for coverage and limits.[^okf][^validator]
+
+If Python is unavailable, check the declared format's rules manually and report that limitation. The v0.3 checker is not proof of v0.2 conformance.[^okf]
 
 ## Select the project and wiki
 
@@ -55,3 +85,5 @@ The agent reports the wiki location, selected product, changed files, checks per
 
 [^skill]: Bundled skill instructions for discovery, classification, initialization, verification, and delivery.
 [^inventory]: Source inventory observed when this documentation was prepared.
+[^okf]: Bundled authoring guide's validation and compatibility sections.
+[^validator]: Captured validator argument handling and exit-code behavior.

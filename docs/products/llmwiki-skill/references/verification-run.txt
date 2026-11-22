@@ -1,0 +1,39 @@
+LLMWiki verification run
+Date: 2026-11-22 (Europe/Zurich)
+Project: /Users/dden/gitroot/one-prompt-doc
+Python: 3.9.6
+
+Command (project root):
+python3 -S -B -m unittest discover -s .agents/skills/llmwiki/scripts/tests -v
+
+Packaging command (project root):
+python3 /Users/dden/.codex/skills/.system/skill-creator/scripts/quick_validate.py .agents/skills/llmwiki
+
+Combined captured output:
+test_computation_at_nested_heading_level (test_validate.ValidatorTests) ... ok
+test_deprecation_and_source_attribution (test_validate.ValidatorTests) ... ok
+test_duplicate_keys_at_root_and_nested_levels (test_validate.ValidatorTests) ... ok
+test_explicit_timestamp_and_current_verification (test_validate.ValidatorTests) ... ok
+test_hidden_files_and_external_symlinks_are_not_read (test_validate.ValidatorTests) ... ok
+test_legacy_path_fallback_is_version_specific (test_validate.ValidatorTests) ... ok
+test_malformed_staleness_is_not_fresh (test_validate.ValidatorTests) ... ok
+test_malformed_yaml_and_unsafe_tags_report_errors (test_validate.ValidatorTests) ... ok
+test_missing_bundle_is_setup_error (test_validate.ValidatorTests) ... ok
+test_nested_flow_block_scalars_unicode_and_aliases (test_validate.ValidatorTests) ... ok
+test_non_mapping_frontmatter_and_missing_delimiter (test_validate.ValidatorTests) ... ok
+test_ordinary_markdown_warns_without_failing_conformance (test_validate.ValidatorTests) ... ok
+test_path_resolution_and_percent_encoding (test_validate.ValidatorTests) ... ok
+test_reserved_files (test_validate.ValidatorTests) ... ok
+test_runs_without_site_packages_and_does_not_modify_bundle (test_validate.ValidatorTests) ... ok
+test_staleness_and_old_verification (test_validate.ValidatorTests) ... ok
+test_yaml_12_core_scalars (test_validate.ValidatorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.994s
+
+OK
+Skill is valid!
+
+Exit code: 0
+
+The tests exercise the validator implementation; no end-to-end agent behavior suite or model benchmark was run.

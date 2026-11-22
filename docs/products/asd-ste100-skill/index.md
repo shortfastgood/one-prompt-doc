@@ -1,5 +1,7 @@
 ---
-okf_version: "0.2"
+okf_version: "0.3"
+title: asd-set100-skill
+description: Usage, writing rules, dictionary lookup, and verification for the ASD-STE100 skill.
 ---
 # asd-set100-skill
 
